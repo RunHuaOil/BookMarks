@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}登录{% endblock %}
+{% block content %}
+    <h1>登录</h1>
+    <p>欢迎来到 Bookmarks :</p>
+    <form action="." method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="登录"></p>
+    </form>
+{% endblock %}

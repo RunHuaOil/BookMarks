@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Bookmarks 相册{% endblock %}
+
+{% block content %}
+    <h1>Bookmarks 相册</h1>
+    <img src="{{ request.GET.url }}" class="image-preview">
+    <form action="." method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="保存图片">
+    </form>
+{% endblock %}

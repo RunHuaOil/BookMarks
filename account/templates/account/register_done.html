@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}欢迎来到 Bookmarks{% endblock %}
+{% block content %}
+    <h1>欢迎你 {{ new_user.first_name }}!</h1>
+    <p>您已经成功注册账号. 现在你可以进行登录了 <a href="{% url "login" %}">登录</a>.</p>
+{% endblock %}

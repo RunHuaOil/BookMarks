@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Bookmarks控制台{% endblock %}
+{% block content %}
+    <h1>控制台</h1>
+    {% with total_images_created=request.user.images_created.count %}
+        <p>欢迎来到您的控制台. 您分享了 {{ total_images_created }} 张照片.</p>
+    {% endwith %}
+    {% with total_love_images=request.user.images_liked.count %}
+        <p>您喜欢 {{ total_love_images }} 张照片.</p>
+    {% endwith %}
+
+    <p>把右边这个按钮拖到浏览器的标签栏,然后在你想分享的图片页面点击它 → <a
+            href="javascript:{% include "bookmarklet_launcher.js" %}" class="button">Bookmarks分享图片</a><p>
+
+    <p>你可以 <a href="{% url "edit" %}">修改个人资料</a> 或者 <a href="{% url "password_change" %}">修改密码</a>.<p>
+    <h2>最新动态</h2>
+    <div id="action-list">
+        {% for action in actions %}
+            {% include "actions/action/detail.html" %}
+        {% endfor %}
+    </div>
+{% endblock %}

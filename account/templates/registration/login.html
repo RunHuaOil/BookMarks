@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Bookmarks{% endblock %}
+{% block content %}
+    <h1>登录</h1>
+    {% if form.errors %}
+        <p>
+            密码错误或用户不存在.
+            请再试一次.
+        </p>
+    {% else %}
+        <p>欢迎来到 Bookmarks :</p>
+    {% endif %}
+    <div class="login-form">
+        <form action="{% url 'login' %}" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}"/>
+            <p><input type="submit" value="登录"></p>
+        </form>
+        <p>还没有账号? <a href="{% url "register" %}">我要注册</a></p>
+        <p><a href="{% url "password_reset" %}">忘记密码?</a></p>
+    </div>
+{% endblock %}
